@@ -354,9 +354,12 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/Boomerang/Boomerang.cs"
+"Assets/Script/Multiplayer/InitialiseLevel.cs"
 "Assets/Script/Multiplayer/PlayerConfigurationManager.cs"
-"Assets/Script/Player/PlayerBehaviour.cs"
+"Assets/Script/Multiplayer/PlayerSetupMenuController.cs"
+"Assets/Script/Multiplayer/SpawnPlayerSetupMenu.cs"
 "Assets/Script/Player/PlayerControls.cs"
+"Assets/Script/Player/PlayerInputHandler.cs"
 "Assets/Script/Player/PlayerMovement.cs"
 -langversion:9.0
 

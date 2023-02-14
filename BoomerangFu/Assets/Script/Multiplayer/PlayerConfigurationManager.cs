@@ -29,6 +29,11 @@ public class PlayerConfigurationManager : MonoBehaviour
         }
     }
 
+    public List<PlayerConfiguration> GetPlayerConfigs()
+    {
+        return _playerConfigs;
+    }
+
     public void SetPlayerColor(int index, Material color)
     {
         _playerConfigs[index].PlayerMaterial = color;
@@ -39,7 +44,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         _playerConfigs[index].IsReady = true;
         if (_playerConfigs.Count == _maxPlayer && _playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene(LevelName);
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
