@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerBehaviour_Test : MonoBehaviour
 {
     public GameObject projectilePrefab;
     private CharacterController _controller;
+    private PlayerControls _controls;
+
+    private bool canShoot = true;
+    public float fireRate = 1f;
+    private Coroutine fireCoroutine;
 
     [HideInInspector]public int _playerID;
     
@@ -16,20 +21,38 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSmoothVelocity;
     private Vector2 _inputVector;
 
+    private void Awake()
+    {
+        _controls = new PlayerControls();
+
+        _controls.Player.Fire.started += _ => ShootShuriken();
+        _controls.Player.Fire.canceled += _ => StopShoot();
+    }
+
+    private void OnEnable()
+    {
+        _controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _controls.Disable();
+    }
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        
     }
-    
-    public void SetInputVector(Vector2 direction)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        _inputVector = direction;
+        _inputVector = ctx.ReadValue<Vector2>();
     }
     
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        
         Vector3 direction = new Vector3(_inputVector.x, 0f,_inputVector.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
@@ -40,10 +63,31 @@ public class PlayerMovement : MonoBehaviour
             _controller.Move(direction * speed * Time.deltaTime);
         }
     }
-    
-    public void LaunchProjectile()
+
+    public void ShootShuriken()
     {
+        if (canShoot)
+        {
+            fireCoroutine = StartCoroutine(LaunchProjectile());
+        }
+        
+    }
+    
+    public void StopShoot()
+    {
+        if (fireCoroutine != null)
+        {
+            StopCoroutine(LaunchProjectile());
+        }
+    }
+    
+    public IEnumerator LaunchProjectile()
+    {
+        canShoot = false;
         GameObject shuriken = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
         shuriken.GetComponent<Boomerang>().playerOwner = gameObject;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+
     }
 }

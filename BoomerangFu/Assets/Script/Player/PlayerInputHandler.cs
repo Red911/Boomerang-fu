@@ -21,6 +21,7 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitializePlayer(PlayerConfiguration pc)
     {
         _playerConfiguration = pc;
+        _playerMovement._playerID = pc.PlayerIndex++;
         playerMesh.material = pc.PlayerMaterial;
         _playerConfiguration.Input.onActionTriggered += InputOnActionTriggered;
     }

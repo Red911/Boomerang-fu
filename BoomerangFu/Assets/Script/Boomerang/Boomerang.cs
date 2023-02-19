@@ -8,20 +8,19 @@ public class Boomerang : MonoBehaviour
     public float speed = 10.0f;
     private Rigidbody rb;
     public float returnDistance = 5.0f;
-    private Transform player;
+    public GameObject playerOwner;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
         rb.angularVelocity = new Vector3(0, 0, 20);
-        player = GameObject.FindWithTag("Player").transform;
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > returnDistance)
+        if (Vector3.Distance(transform.position, playerOwner.transform.position) > returnDistance)
         {
-            rb.velocity = (player.position - transform.position).normalized * speed;
+            rb.velocity = (playerOwner.transform.position - transform.position).normalized * speed;
         }
     }
 

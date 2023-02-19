@@ -42,9 +42,9 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void ReadyPlayer(int index)
     {
         _playerConfigs[index].IsReady = true;
-        if (_playerConfigs.Count == _maxPlayer && _playerConfigs.All(p => p.IsReady == true))
+        if (_playerConfigs.Count != 0 && _playerConfigs.Count <= _maxPlayer && _playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(LevelName);
         }
     }
 
