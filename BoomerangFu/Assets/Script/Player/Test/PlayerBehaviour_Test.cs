@@ -13,6 +13,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
     private bool canShoot = true;
     public float fireRate = 1f;
     private Coroutine fireCoroutine;
+    private int compteurShuriken;
 
     [HideInInspector]public int _playerID;
     
@@ -84,8 +85,15 @@ public class PlayerBehaviour_Test : MonoBehaviour
     public IEnumerator LaunchProjectile()
     {
         canShoot = false;
+        compteurShuriken++;
         GameObject shuriken = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        if (compteurShuriken == 3)
+        {
+            shuriken.GetComponent<Boomerang>().activeBounce = true;
+            compteurShuriken = 0;
+        }
         shuriken.GetComponent<Boomerang>().playerOwner = gameObject;
+       
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
 
