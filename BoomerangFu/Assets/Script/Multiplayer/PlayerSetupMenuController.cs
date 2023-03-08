@@ -29,6 +29,12 @@ public class PlayerSetupMenuController : MonoBehaviour
         }
     }
 
+    public void SetTeam(int whichTeam)
+    {
+        if(!_inputEnabled) {return;}
+        
+        PlayerConfigurationManager.Instance.SetPlayerTeam(_playeIndex, whichTeam);
+    }
     public void SetColor(Material color)
     {
         if(!_inputEnabled) {return;}

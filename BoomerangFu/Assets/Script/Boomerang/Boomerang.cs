@@ -36,6 +36,7 @@ public class Boomerang : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            col.gameObject.GetComponent<PlayerBehaviour_Test>().isDead = true;
             Destroy(this.gameObject);
         }
         else if(col.gameObject.CompareTag("Wall"))

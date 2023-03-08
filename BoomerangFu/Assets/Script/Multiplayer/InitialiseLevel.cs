@@ -8,7 +8,7 @@ public class InitialiseLevel : MonoBehaviour
     [SerializeField] private Transform[] playerSpawns;
     [SerializeField] private GameObject playerPrefabs;
 
-    private void Start()
+    private void Awake()
     {
         var playerConfigs = PlayerConfigurationManager.Instance.GetPlayerConfigs().ToArray();
         for (int i = 0; i < playerConfigs.Length; i++)

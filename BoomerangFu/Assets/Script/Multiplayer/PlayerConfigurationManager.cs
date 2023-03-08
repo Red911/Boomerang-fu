@@ -38,6 +38,11 @@ public class PlayerConfigurationManager : MonoBehaviour
     {
         _playerConfigs[index].PlayerMaterial = color;
     }
+    
+    public void SetPlayerTeam(int index, int whichTeam)
+    {
+        _playerConfigs[index].PlayerTeam = whichTeam;
+    }
 
     public void ReadyPlayer(int index)
     {
@@ -70,6 +75,8 @@ public class PlayerConfiguration
     
     public PlayerInput Input {get; set;}
     public int PlayerIndex {get; set;}
+    
+    public int PlayerTeam {get; set;}
     public bool IsReady {get; set;}
     public Material PlayerMaterial {get; set;}
 }

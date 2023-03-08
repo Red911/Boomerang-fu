@@ -66,9 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Green
-
-'
+  m_text: Team 02
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -371,7 +369,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 4322560207359772878}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0.91901326, b: 0, a: 1}
+    m_NormalColor: {r: 0.14117648, g: 0.18431373, b: 0.9607844, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -396,10 +394,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4322560206408017520}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
+        m_MethodName: SetTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4322560206408017520}
+        m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
         m_MethodName: SetColor
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: b23ff2367fe8f764f959e48f80394898, type: 2}
+          m_ObjectArgument: {fileID: 2100000, guid: 3779ac0f1e7ddc647819d11ac12cb646, type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -606,7 +616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Blue
+  m_text: 'Team 01
 
 '
   m_isRightToLeft: 0
@@ -799,6 +809,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4322560206408017520}
+        m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
+        m_MethodName: SetTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4322560206408017520}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
         m_MethodName: SetColor
@@ -1045,7 +1067,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 4322560206499130905}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.754717, b: 0.14188352, a: 1}
+    m_NormalColor: {r: 0.7254902, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1070,10 +1092,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4322560206408017520}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
+        m_MethodName: SetTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4322560206408017520}
+        m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
         m_MethodName: SetColor
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2100000, guid: 1d2fd656a8185be488d79f54340f68a4, type: 2}
+          m_ObjectArgument: {fileID: 2100000, guid: 113f8dff2fdabc044ab422a0313f534b, type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1202,6 +1236,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4322560206408017520}
+        m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
+        m_MethodName: SetTeam
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4322560206408017520}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
         m_MethodName: SetColor
@@ -1415,7 +1461,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Red
+  m_text: Team 02
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1591,9 +1637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Yellow
-
-'
+  m_text: Team 01
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -14,8 +14,12 @@ public class PlayerBehaviour_Test : MonoBehaviour
     public float fireRate = 1f;
     private Coroutine fireCoroutine;
     private int compteurShuriken;
+    
+    public float timebetweeDeath = 3f;
+    [HideInInspector]public bool isDead;
 
     [HideInInspector]public int _playerID;
+    public Transform SpawnPoint;
     
     public float speed = 6;
     public float turnSmoothTime = 0.1f;
@@ -49,8 +53,16 @@ public class PlayerBehaviour_Test : MonoBehaviour
     {
         _inputVector = ctx.ReadValue<Vector2>();
     }
-    
-    // Update is called once per frame
+
+    private void Update()
+    {
+        // if (isDead)
+        // {
+        //     isDead = false;
+        //     StartCoroutine(KillAndResurect());
+        // }
+    }
+
     void FixedUpdate()
     {
         
@@ -98,4 +110,27 @@ public class PlayerBehaviour_Test : MonoBehaviour
         canShoot = true;
 
     }
+    
+    // private IEnumerator KillAndResurect()
+    // {
+    //     KillObject();
+    //     yield return new WaitForSeconds(timebetweeDeath);
+    //     ResurectPlayer();
+    // }
+    // private void KillObject()
+    // {
+    //     // Destroy(target); //détruit l'objet du jeu
+    //     GetComponent<MeshRenderer>().enabled = false;
+    //     GetComponent<CharacterController>().enabled = false;
+    //     canShoot = false;
+    //
+    // }
+    //
+    // private void ResurectPlayer()
+    // {
+    //     GetComponent<MeshRenderer>().enabled = true;
+    //     GetComponent<CharacterController>().enabled = true;
+    //     transform.position = SpawnPoint.position;
+    //     canShoot = true;
+    // }
 }
