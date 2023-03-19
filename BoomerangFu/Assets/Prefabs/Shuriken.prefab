@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  returnDistance: 20
+  maxDistance: 10
   playerOwner: {fileID: 0}
   activeBounce: 0
   bounceSpeed: 10

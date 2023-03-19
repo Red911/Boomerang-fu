@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Boomerang : MonoBehaviour
 {
-    public float speed = 10.0f;
-    private Rigidbody rb;
-    public float returnDistance = 5.0f;
+    public float speed = 10f;
+    public float maxDistance = 10f;
     public GameObject playerOwner;
+    private bool returning = false;
+    private Vector3 originalPosition;
+    
 
     [Header("Bounce")] 
     [HideInInspector] public bool activeBounce;
@@ -17,19 +19,42 @@ public class Boomerang : MonoBehaviour
     public float percentagePertVelocity = 0.9f;
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
-        rb.angularVelocity = new Vector3(0, 0, 20);
+        
+        // rb.velocity = transform.forward * speed;
+        // rb.angularVelocity = new Vector3(0, 0, 20);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, playerOwner.transform.position) > returnDistance)
+        if (!returning)
         {
-            rb.velocity = (playerOwner.transform.position - transform.position).normalized * speed;
+            // Move the boomerang forward
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            
+            // If the boomerang has reached its maximum distance, start returning
+            if (Vector3.Distance(originalPosition, transform.position) > maxDistance)
+            {
+                returning = true;
+            }
+        }
+        else
+        {
+            // Calculate the direction to the player
+            Vector3 direction = (playerOwner.transform.position - transform.position).normalized;
+            
+            // Rotate the boomerang towards the player
+            transform.rotation = Quaternion.LookRotation(direction);
+            
+            // Move the boomerang towards the player
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            
+            // If the boomerang is close enough to the player, reset its position and rotation
+            if (Vector3.Distance(playerOwner.transform.position, transform.position) < 0.1f)
+            {
+                returning = false;
+            }
         }
 
-       
     }
 
     private void OnCollisionEnter(Collision col)
@@ -45,8 +70,9 @@ public class Boomerang : MonoBehaviour
             {
                 Vector3 normal = col.contacts[0].normal;
                 var direction = Vector3.Reflect(transform.forward, normal);
-                rb.AddForce(direction * bounceSpeed, ForceMode.Impulse);
-                rb.velocity *= percentagePertVelocity;
+                // rb.AddForce(direction * bounceSpeed, ForceMode.Impulse);
+                // rb.velocity *= percentagePertVelocity;
+                
             }
             else
             {
@@ -59,10 +85,16 @@ public class Boomerang : MonoBehaviour
                 */
                 
                 // If shouldBounce is false, stick the projectile to the wall
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                // rb.constraints = RigidbodyConstraints.FreezeAll;
                 
             }
             
         }
+    }
+    
+    // Fonction pour calculer une position sur une courbe de Bezier
+    private Vector3 BezierCurve(Vector3 startPoint, Vector3 midPoint, Vector3 endPoint, float t)
+    {
+        return ((1 - t) * (1 - t) * startPoint) + (2 * (1 - t) * t * midPoint) + (t * t * endPoint);
     }
 }
