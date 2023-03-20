@@ -8,11 +8,23 @@ public class GameManager : MonoBehaviour
     public int teamTwoScore;
 
     public Timer timer;
-    void Start()
-    {
-        
-    }
 
+    [HideInInspector] public string levelName;
+    
+    public static GameManager Instance { get; set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Debug.LogWarning("Trying to create another instance of PlayerConfigurationManager ");
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+   
     // Update is called once per frame
     void Update()
     {

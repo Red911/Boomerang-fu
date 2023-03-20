@@ -44,6 +44,11 @@ public class MainMenu : MonoBehaviour
         PlayerSelection.SetActive(true);
         CloseMenu(MainMenuUI);
     }
+
+    public void SetLevel(string LevelName)
+    {
+        GameManager.Instance.levelName = LevelName;
+    }
     
     public void Quit()
     {
@@ -67,6 +72,7 @@ public class MainMenu : MonoBehaviour
                 
             }
         }
+        
     }
     
     private void CloseMenu(GameObject menu)
