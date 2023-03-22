@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +11,8 @@ public class GameManager : MonoBehaviour
 
     public Timer timer;
 
-    [HideInInspector] public string levelName;
+    private TextMeshProUGUI _teamOneUI;
+    private TextMeshProUGUI _teamTwoUI;
     
     public static GameManager Instance { get; set; }
 
@@ -24,7 +27,13 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
     }
-   
+
+    private void Start()
+    {
+        _teamOneUI = GameObject.Find("Team1Score").GetComponentInChildren<TextMeshProUGUI>();
+        _teamTwoUI = GameObject.Find("Team2Score").GetComponentInChildren<TextMeshProUGUI>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +52,21 @@ public class GameManager : MonoBehaviour
                 print("Draw !");
             }
             
+        }
+    }
+
+    public void UpdateScore(int team)
+    {
+        switch (team)
+        {
+            case 1:
+                teamOneScore += 50;
+                _teamOneUI.text = teamOneScore.ToString();
+                break;
+            case 2:
+                teamTwoScore += 50;
+                _teamTwoUI.text = teamTwoScore.ToString();
+                break;
         }
     }
 }

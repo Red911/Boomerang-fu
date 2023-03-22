@@ -10,7 +10,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerConfiguration _playerConfiguration;
     private PlayerMovement _playerMovement;
     [SerializeField] private MeshRenderer playerMesh;
-    private int _whichTeam;
+    public int whichTeam;
     private PlayerControls _controls;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
         _playerConfiguration = pc;
         _playerMovement._playerID = pc.PlayerIndex++;
         playerMesh.material = pc.PlayerMaterial;
-        _whichTeam = pc.PlayerTeam;
+        whichTeam = pc.PlayerTeam;
         _playerConfiguration.Input.onActionTriggered += InputOnActionTriggered;
     }
 
@@ -52,7 +52,16 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (_playerMovement != null)
         {
-            _playerMovement.LaunchProjectile();
+            if (launch.performed)
+            {
+                _playerMovement.ShootShuriken();
+            }
+
+            if (launch.canceled)
+            {
+                _playerMovement.StopShoot(); 
+            }
+            
         }
     }
 }

@@ -6,19 +6,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+    
     public GameObject projectilePrefab;
     private CharacterController _controller;
 
-    [HideInInspector]public int _playerID;
+   public int _playerID;
     
     public float speed = 6;
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
     private Vector2 _inputVector;
+    
+    [Header("Shuriken")]
+    private bool canShoot = true;
+    public float fireRate = 1f;
+    private Coroutine fireCoroutine;
+    private int compteurShuriken;
+    
+    [Header("Dead")]
+    public float timebetweeDeath = 3f;
+    public bool isDead;
+    private InitialiseLevel _initialiseLevel;
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _initialiseLevel = GameObject.Find("LevelInitializer").GetComponent<InitialiseLevel>();
     }
     
     public void SetInputVector(Vector2 direction)
@@ -26,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         _inputVector = direction;
     }
     
-
     // Update is called once per frame
     void Update()
     {
@@ -39,11 +52,68 @@ public class PlayerMovement : MonoBehaviour
 
             _controller.Move(direction * speed * Time.deltaTime);
         }
+        
+        if (isDead)
+        {
+            isDead = false;
+            StartCoroutine(KillAndResurect());
+        }
     }
     
-    public void LaunchProjectile()
+    public void ShootShuriken()
     {
+        if (canShoot)
+        {
+            fireCoroutine = StartCoroutine(LaunchProjectile());
+        }
+        
+    }
+    
+    public void StopShoot()
+    {
+        if (fireCoroutine != null)
+        {
+            StopCoroutine(LaunchProjectile());
+        }
+    }
+    
+    public IEnumerator LaunchProjectile()
+    {
+        canShoot = false;
+        compteurShuriken++;
         GameObject shuriken = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        if (compteurShuriken == 3)
+        {
+            shuriken.GetComponent<Boomerang>().activeBounce = true;
+            compteurShuriken = 0;
+        }
         shuriken.GetComponent<Boomerang>().playerOwner = gameObject;
+       
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+
+    }
+    
+    private IEnumerator KillAndResurect()
+    {
+        KillObject();
+        yield return new WaitForSeconds(timebetweeDeath);
+        ResurectPlayer();
+    }
+    private void KillObject()
+    {
+        // Destroy(target); //détruit l'objet du jeu
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
+        canShoot = false;
+    
+    }
+    
+    private void ResurectPlayer()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<CharacterController>().enabled = true;
+        transform.position = _initialiseLevel.playerSpawns[_playerID].position;
+        canShoot = true;
     }
 }

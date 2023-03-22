@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class InitialiseLevel : MonoBehaviour
 {
-    [SerializeField] private Transform[] playerSpawns;
+    public Transform[] playerSpawns;
     [SerializeField] private GameObject playerPrefabs;
 
     private void Awake()

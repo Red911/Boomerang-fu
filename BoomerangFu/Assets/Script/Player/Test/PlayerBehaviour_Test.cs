@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerBehaviour_Test : MonoBehaviour
 {
+    public int team;
+    
     public GameObject projectilePrefab;
     private CharacterController _controller;
     private PlayerControls _controls;
@@ -16,7 +18,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
     private int compteurShuriken;
     
     public float timebetweeDeath = 3f;
-    [HideInInspector]public bool isDead;
+    public bool isDead;
 
     [HideInInspector]public int _playerID;
     public Transform SpawnPoint;
@@ -56,11 +58,11 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
     private void Update()
     {
-        // if (isDead)
-        // {
-        //     isDead = false;
-        //     StartCoroutine(KillAndResurect());
-        // }
+        if (isDead)
+        {
+            isDead = false;
+            StartCoroutine(KillAndResurect());
+        }
     }
 
     void FixedUpdate()
@@ -111,26 +113,26 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
     }
     
-    // private IEnumerator KillAndResurect()
-    // {
-    //     KillObject();
-    //     yield return new WaitForSeconds(timebetweeDeath);
-    //     ResurectPlayer();
-    // }
-    // private void KillObject()
-    // {
-    //     // Destroy(target); //détruit l'objet du jeu
-    //     GetComponent<MeshRenderer>().enabled = false;
-    //     GetComponent<CharacterController>().enabled = false;
-    //     canShoot = false;
-    //
-    // }
-    //
-    // private void ResurectPlayer()
-    // {
-    //     GetComponent<MeshRenderer>().enabled = true;
-    //     GetComponent<CharacterController>().enabled = true;
-    //     transform.position = SpawnPoint.position;
-    //     canShoot = true;
-    // }
+    private IEnumerator KillAndResurect()
+    {
+        KillObject();
+        yield return new WaitForSeconds(timebetweeDeath);
+        ResurectPlayer();
+    }
+    private void KillObject()
+    {
+        // Destroy(target); //détruit l'objet du jeu
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
+        canShoot = false;
+    
+    }
+    
+    private void ResurectPlayer()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<CharacterController>().enabled = true;
+        transform.position = SpawnPoint.position;
+        canShoot = true;
+    }
 }

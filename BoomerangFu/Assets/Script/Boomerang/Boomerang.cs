@@ -6,9 +6,10 @@ using UnityEngine;
 public class Boomerang : MonoBehaviour
 {
     public float speed = 10f;
-    public float maxDistance = 10f;
+    public float distance = 10f;
     public GameObject playerOwner;
     private bool returning = false;
+    public float rotationSpeed = 10f;
     private Vector3 originalPosition;
     private Rigidbody rb;
     private Vector3 startPosition; 
@@ -24,45 +25,38 @@ public class Boomerang : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         startPosition = transform.position;
-        transform.Rotate(-90f,0, 0);
-        rb.velocity = transform.forward * speed;
-        rb.angularVelocity = new Vector3(0, 0, 20);
+        // transform.Rotate(90f, 0f, 0f, Space.Self);
+        
+        // rb.velocity = transform.forward * speed;
+        // rb.angularVelocity = new Vector3(0, 0, 20);
     }
 
     void FixedUpdate()
     {
-        if (!returning)
+        if (returning)
         {
-            // Move the boomerang forward
-            // transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            // Le boomerang revient vers le joueur
+            Vector3 direction = (playerOwner.transform.position - transform.position).normalized;
+            rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
+
+            // Rotation du boomerang pendant le retour
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+
             
-            // If the boomerang has reached its maximum distance, start returning
-            if (Vector3.Distance(playerOwner.transform.position, transform.position) > maxDistance)
-            {
-                returning = true;
-            }
         }
         else
         {
-            var position = playerOwner.transform.position;
-            
-            // Calculate the direction to the player
-            Vector3 direction = (position - transform.position).normalized;
-            
-            // Rotate the boomerang towards the player
-            transform.rotation = Quaternion.LookRotation(direction);
-            
-            
-            // Move the boomerang towards the player
-            // transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            rb.velocity = (position - transform.position).normalized * speed;
-            
-            // If the boomerang is close enough to the player, reset its position and rotation
-            if (Vector3.Distance(playerOwner.transform.position, this.transform.position) < 0.1f)
+            // Le boomerang est lancé
+            rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
+
+            // Rotation du boomerang pendant le lancer
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.fixedDeltaTime * 1000f, Space.Self);
+
+            // Si le boomerang a parcouru la distance maximale, il commence à revenir
+            if (Vector3.Distance(transform.position, startPosition) > distance)
             {
-                transform.position = startPosition;
-                GetComponent<Rigidbody>().velocity = Vector3.zero;
-                returning = false;
+                returning = true;
             }
         }
 
@@ -70,11 +64,17 @@ public class Boomerang : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject == playerOwner)
         {
-            col.gameObject.GetComponent<PlayerBehaviour_Test>().isDead = true;
             Destroy(this.gameObject);
         }
+        else if (col.gameObject.CompareTag("Player") && col.gameObject != playerOwner && col.gameObject.GetComponent<PlayerInputHandler>().whichTeam != playerOwner.GetComponent<PlayerInputHandler>().whichTeam)
+        {
+            col.gameObject.GetComponent<PlayerMovement>().isDead = true;
+            GameManager.Instance.UpdateScore(playerOwner.GetComponent<PlayerInputHandler>().whichTeam);
+            Destroy(this.gameObject);
+        }
+
         else if(col.gameObject.CompareTag("Wall"))
         {
             if (activeBounce)
@@ -103,9 +103,4 @@ public class Boomerang : MonoBehaviour
         }
     }
     
-    // Fonction pour calculer une position sur une courbe de Bezier
-    private Vector3 BezierCurve(Vector3 startPoint, Vector3 midPoint, Vector3 endPoint, float t)
-    {
-        return ((1 - t) * (1 - t) * startPoint) + (2 * (1 - t) * t * midPoint) + (t * t * endPoint);
-    }
 }

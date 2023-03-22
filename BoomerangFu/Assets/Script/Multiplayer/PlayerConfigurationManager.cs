@@ -8,17 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerConfigurationManager : MonoBehaviour
 {
-    private string LevelName;
+    public string LevelName;
     
     private List<PlayerConfiguration> _playerConfigs;
 
     [SerializeField]private int _maxPlayer = 4;
     public static PlayerConfigurationManager Instance { get; set; }
-
-    private void OnEnable()
-    {
-        LevelName = GameManager.Instance.levelName;
-    }
 
     private void Awake()
     {
