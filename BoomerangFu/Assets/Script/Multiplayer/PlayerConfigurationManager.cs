@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerConfigurationManager : MonoBehaviour
 {
-    public string LevelName;
+    public string levelName;
     
     private List<PlayerConfiguration> _playerConfigs;
 
@@ -47,9 +47,10 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void ReadyPlayer(int index)
     {
         _playerConfigs[index].IsReady = true;
-        if (_playerConfigs.Count != 0 && _playerConfigs.Count <= _maxPlayer && _playerConfigs.All(p => p.IsReady == true))
+        print("pute");
+        if (_playerConfigs.Count > 1 && _playerConfigs.Count <= _maxPlayer && _playerConfigs.All(p => p.IsReady))
         {
-            SceneManager.LoadScene(LevelName);
+            SceneManager.LoadScene(levelName);
         }
     }
 

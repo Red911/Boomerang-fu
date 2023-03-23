@@ -15,7 +15,7 @@ C:/Users/mroma/Documents/Unity/Boomerang-fu/BoomerangFu
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-53675
+50135
 Successfully changed project path to: C:/Users/mroma/Documents/Unity/Boomerang-fu/BoomerangFu
 C:/Users/mroma/Documents/Unity/Boomerang-fu/BoomerangFu
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,11 +47,11 @@ C:/Users/mroma/Documents/Unity/Boomerang-fu/BoomerangFu
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [13756] Host "[IP] 192.168.1.188 [Port] 0 [Flags] 2 [Guid] 1476224492 [EditorId] 1476224492 [Version] 1048832 [Id] WindowsEditor(7,Red) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [2920] Host "[IP] 192.168.1.188 [Port] 0 [Flags] 2 [Guid] 2684570418 [EditorId] 2684570418 [Version] 1048832 [Id] WindowsEditor(7,Red) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [13756] Host "[IP] 192.168.1.188 [Port] 0 [Flags] 2 [Guid] 1476224492 [EditorId] 1476224492 [Version] 1048832 [Id] WindowsEditor(7,Red) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [2920] Host "[IP] 192.168.1.188 [Port] 0 [Flags] 2 [Guid] 2684570418 [EditorId] 2684570418 [Version] 1048832 [Id] WindowsEditor(7,Red) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 278.17 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 136.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.16f1 (4016570cf34f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Resources/UnitySubsystems
@@ -61,98 +61,98 @@ Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
     Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f14)
     Vendor:   NVIDIA
-    VRAM:     8031 MB
-    Driver:   31.0.15.2225
+    VRAM:     8019 MB
+    Driver:   31.0.15.3118
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56700
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56648
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.167200 seconds.
+Registered in 0.081225 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 138.95 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 133.22 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.997 seconds
+- Completed reload, in  1.382 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1998ms)
-		BeginReloadAssembly (374ms)
+	ReloadAssembly (1383ms)
+		BeginReloadAssembly (238ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (1024ms)
-			LoadAssemblies (358ms)
+		EndReloadAssembly (806ms)
+			LoadAssemblies (224ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (249ms)
+			SetupTypeCache (181ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (56ms)
-			SetupLoadedEditorAssemblies (564ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (473ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (194ms)
+				InitializePlatformSupportModulesInManaged (115ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (139ms)
-				BeforeProcessingInitializeOnLoad (3ms)
-				ProcessInitializeOnLoadAttributes (144ms)
-				ProcessInitializeOnLoadMethodAttributes (84ms)
+				RefreshPlugins (133ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (145ms)
+				ProcessInitializeOnLoadMethodAttributes (77ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.047774 seconds.
+Registered in 0.040140 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\mroma\Documents\Unity\Boomerang-fu\BoomerangFu\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\mroma\Documents\Unity\Boomerang-fu\BoomerangFu\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 164.68 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 110.58 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.250 seconds
+- Completed reload, in  2.498 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3251ms)
-		BeginReloadAssembly (554ms)
+	ReloadAssembly (2499ms)
+		BeginReloadAssembly (472ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (11ms)
+			DisableScriptedObjects (13ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (153ms)
-		EndReloadAssembly (2328ms)
-			LoadAssemblies (455ms)
+			CreateAndSetChildDomain (129ms)
+		EndReloadAssembly (1728ms)
+			LoadAssemblies (359ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (611ms)
+			SetupTypeCache (417ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (106ms)
-			SetupLoadedEditorAssemblies (1189ms)
+			RebuildScriptCaches (63ms)
+			SetupLoadedEditorAssemblies (955ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (65ms)
+				InitializePlatformSupportModulesInManaged (43ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (165ms)
-				BeforeProcessingInitializeOnLoad (340ms)
-				ProcessInitializeOnLoadAttributes (509ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
-				AfterProcessingInitializeOnLoad (74ms)
+				RefreshPlugins (111ms)
+				BeforeProcessingInitializeOnLoad (287ms)
+				ProcessInitializeOnLoadAttributes (410ms)
+				ProcessInitializeOnLoadMethodAttributes (31ms)
+				AfterProcessingInitializeOnLoad (73ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (13ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 1.60 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3726 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 30 unused Assets / (113.6 KB). Loaded Objects now: 4188.
-Memory consumption went from 133.6 MB to 133.5 MB.
-Total: 19.653100 ms (FindLiveObjects: 1.108700 ms CreateObjectMapping: 5.588000 ms MarkObjects: 12.732900 ms  DeleteObjects: 0.220300 ms)
+Unloading 3732 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (113.4 KB). Loaded Objects now: 4195.
+Memory consumption went from 134.1 MB to 134.0 MB.
+Total: 4.925100 ms (FindLiveObjects: 0.467200 ms CreateObjectMapping: 0.692800 ms MarkObjects: 3.604100 ms  DeleteObjects: 0.159800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -164,3 +164,43 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 470883.698289 seconds.
+  path: Assets/Shuriken/shuriken2.fbx
+  artifactKey: Guid(c8c12368f920af54e87ed7de3d1c716b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shuriken/shuriken2.fbx using Guid(c8c12368f920af54e87ed7de3d1c716b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eb0d14c6fc2ddc57656c8b01fd53d14') in 0.439221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Shuriken/01 - Default.mat
+  artifactKey: Guid(83767e7d4aa6aa3459682e4c76001074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shuriken/01 - Default.mat using Guid(83767e7d4aa6aa3459682e4c76001074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9f720e97da23e1337f4d22f1673875d') in 0.041757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Shuriken
+  artifactKey: Guid(aa9a044f3c7d48345b7d776e796a3ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shuriken using Guid(aa9a044f3c7d48345b7d776e796a3ab2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcb344cf0e4a2f2fd4e1bf24e492cc4e') in 0.011232 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.513085 seconds.
+  path: Assets/Prefabs/Player_Test.prefab
+  artifactKey: Guid(a266cb01c630a2a46b7d1b1a69b16756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Player_Test.prefab using Guid(a266cb01c630a2a46b7d1b1a69b16756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '110e32d418033df5765713e3229bd079') in 0.069130 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Prefabs/PlayerConfiguration.prefab
+  artifactKey: Guid(5822be7fe668a714e8668e8cdf38328c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerConfiguration.prefab using Guid(5822be7fe668a714e8668e8cdf38328c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d0c2872037bcb90430feeb224bb255f') in 0.092471 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Prefabs/Shuriken.prefab
+  artifactKey: Guid(774c4f868cb49f54db2e3988adbc89a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Shuriken.prefab using Guid(774c4f868cb49f54db2e3988adbc89a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae937c34d6b8b70eb09d97382176e1a0') in 0.012069 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
