@@ -1,20 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class TransitionTimer : MonoBehaviour
 {
-   [Tooltip("In Seconds")] public float TimeLeft;
+    [Tooltip("In Seconds")] public float TimeLeft;
     public bool TimerOn = false;
 
     public TextMeshProUGUI TimerTxt;
-
-    private void Start()
-    {
-        TimerOn = true;
-    }
+    
 
     private void Update()
     {
@@ -36,10 +32,9 @@ public class Timer : MonoBehaviour
     private void UpdateTimer(float currentTime)
     {
         currentTime++;
-
-        float minutes = Mathf.FloorToInt(currentTime / 60);
+        
         float seconds = Mathf.FloorToInt(currentTime % 60);
-
-        TimerTxt.text = string.Format("{00:00} : {1:00}", minutes, seconds);
+        
+        TimerTxt.text = $"{seconds}";
     }
 }

@@ -47,7 +47,6 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void ReadyPlayer(int index)
     {
         _playerConfigs[index].IsReady = true;
-        print("pute");
         if (_playerConfigs.Count > 1 && _playerConfigs.Count <= _maxPlayer && _playerConfigs.All(p => p.IsReady))
         {
             SceneManager.LoadScene(levelName);
@@ -56,8 +55,6 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput pi)
     {
-        Debug.Log("Player Joined " + pi.playerIndex);
-
         if (!_playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
