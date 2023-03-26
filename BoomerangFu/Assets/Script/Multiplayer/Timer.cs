@@ -27,7 +27,6 @@ public class Timer : MonoBehaviour
             }
             else
             {
-                print("Time is Up");
                 TimeLeft = 0;
                 TimerOn = false;
             }

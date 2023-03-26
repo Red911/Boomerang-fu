@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     
     public GameObject projectilePrefab;
     private CharacterController _controller;
+    private PlayerInputHandler _playerInputHandler;
 
    public int _playerID;
     
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _playerInputHandler = GetComponent<PlayerInputHandler>();
         _initialiseLevel = GameObject.Find("LevelInitializer").GetComponent<InitialiseLevel>();
     }
     
@@ -113,7 +115,15 @@ public class PlayerMovement : MonoBehaviour
     {
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<CharacterController>().enabled = true;
-        transform.position = _initialiseLevel.playerSpawns[_playerID].position;
+
+        if (_playerInputHandler.whichTeam == 1)
+        {
+            transform.position = _initialiseLevel.teamOnePlayerSpawns[_playerID].position;
+        }
+        else if (_playerInputHandler.whichTeam == 2)
+        {
+            transform.position = _initialiseLevel.teamTwoPlayerSpawns[_playerID].position;
+        }
         canShoot = true;
     }
 }

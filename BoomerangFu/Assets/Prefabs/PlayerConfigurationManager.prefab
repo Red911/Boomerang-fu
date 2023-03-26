@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2235de7b9d076d849b807ce3d97698bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelName: SampleScene
+  levelName: Dojo
   _maxPlayer: 4
 --- !u!114 &3485963741541905656
 MonoBehaviour:

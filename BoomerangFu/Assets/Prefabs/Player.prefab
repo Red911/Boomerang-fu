@@ -100,8 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5560101975323845524, guid: 774c4f868cb49f54db2e3988adbc89a4, type: 3}
+  _playerID: 0
   speed: 6
   turnSmoothTime: 0.1
+  fireRate: 1
+  timebetweeDeath: 3
+  isDead: 0
 --- !u!143 &4526048610313279795
 CharacterController:
   m_ObjectHideFlags: 0
@@ -133,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 4526048610313279790}
+  whichTeam: 0
 --- !u!1 &4526048611784718140
 GameObject:
   m_ObjectHideFlags: 0

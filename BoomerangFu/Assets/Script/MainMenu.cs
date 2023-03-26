@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
     public void PlayerSelectionButton()
     {
         PlayerSelection.enabled = true;
-        print("bite");
         CloseMenu(MainMenuUI);
     }
     
