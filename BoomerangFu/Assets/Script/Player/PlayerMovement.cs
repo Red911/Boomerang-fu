@@ -19,6 +19,14 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSmoothVelocity;
     private Vector2 _inputVector;
     
+    [Header("Ground & Gravity")]
+    public float gravity = -9.81f;
+    private Vector3 velocity;
+    private bool isGrounded;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    
     [Header("Shuriken")]
     private bool canShoot = true;
     public float fireRate = 1f;
@@ -45,6 +53,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+        
         Vector3 direction = new Vector3(_inputVector.x, 0f,_inputVector.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
@@ -54,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
             _controller.Move(direction * speed * Time.deltaTime);
         }
+        
+        velocity.y += gravity * Time.deltaTime;
+        _controller.Move(velocity * Time.deltaTime);
         
         if (isDead)
         {

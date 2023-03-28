@@ -8,6 +8,15 @@ public class PlayerBehaviour_Test : MonoBehaviour
 {
     public int team;
     
+    
+    [Header("Ground & Gravity")]
+    public float gravity = -9.81f;
+    private Vector3 velocity;
+    private bool isGrounded;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    
     public GameObject projectilePrefab;
     private CharacterController _controller;
     private PlayerControls _controls;
@@ -63,6 +72,16 @@ public class PlayerBehaviour_Test : MonoBehaviour
             isDead = false;
             StartCoroutine(KillAndResurect());
         }
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        velocity.y += gravity * Time.deltaTime;
+        _controller.Move(velocity * Time.deltaTime);
     }
 
     void FixedUpdate()
@@ -77,6 +96,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
             _controller.Move(direction * speed * Time.deltaTime);
         }
+      
     }
 
     public void ShootShuriken()
