@@ -7,7 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerBehaviour_Test : MonoBehaviour
 {
     public int team;
-    
+
+    private Animator _animator;
+    private int velocityXHash;
+    private int velocityYHash;
     
     [Header("Ground & Gravity")]
     public float gravity = -9.81f;
@@ -31,7 +34,8 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
     [HideInInspector]public int _playerID;
     public Transform SpawnPoint;
-    
+
+    private Vector3 direction;
     public float speed = 6;
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
@@ -58,7 +62,10 @@ public class PlayerBehaviour_Test : MonoBehaviour
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-        
+        _animator = GetComponentInChildren<Animator>();
+
+        velocityXHash = Animator.StringToHash("VelocityX");
+        velocityYHash = Animator.StringToHash("VelocityY");
     }
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -82,12 +89,15 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         _controller.Move(velocity * Time.deltaTime);
+        
+        _animator.SetFloat(velocityXHash, direction.x);
+        _animator.SetFloat(velocityYHash, direction.y);
     }
 
     void FixedUpdate()
     {
         
-        Vector3 direction = new Vector3(_inputVector.x, 0f,_inputVector.y).normalized;
+        direction = new Vector3(_inputVector.x, 0f,_inputVector.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
