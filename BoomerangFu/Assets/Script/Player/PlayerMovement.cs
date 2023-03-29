@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     
     
     public GameObject projectilePrefab;
-    private CharacterController _controller;
+    private Rigidbody rb;
     private PlayerInputHandler _playerInputHandler;
 
    public int _playerID;
@@ -18,16 +18,10 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     private float _turnSmoothVelocity;
     private Vector2 _inputVector;
-    
-    [Header("Ground & Gravity")]
-    public float gravity = -9.81f;
-    private Vector3 velocity;
-    private bool isGrounded;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    
-    [Header("Shuriken")]
+
+
+    [Header("Shuriken")] 
+    public Transform SpawnShuriken;
     private bool canShoot = true;
     public float fireRate = 1f;
     private Coroutine fireCoroutine;
@@ -40,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         _playerInputHandler = GetComponent<PlayerInputHandler>();
         _initialiseLevel = GameObject.Find("LevelInitializer").GetComponent<InitialiseLevel>();
     }
@@ -53,13 +47,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-        
         Vector3 direction = new Vector3(_inputVector.x, 0f,_inputVector.y).normalized;
         if (direction.magnitude >= 0.1f)
         {
@@ -67,11 +54,9 @@ public class PlayerMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
 
-            _controller.Move(direction * speed * Time.deltaTime);
+            rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
         }
         
-        velocity.y += gravity * Time.deltaTime;
-        _controller.Move(velocity * Time.deltaTime);
         
         if (isDead)
         {
@@ -101,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canShoot = false;
         compteurShuriken++;
-        GameObject shuriken = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        GameObject shuriken = Instantiate(projectilePrefab, SpawnShuriken.position, transform.rotation);
         if (compteurShuriken == 3)
         {
             shuriken.GetComponent<Boomerang>().activeBounce = true;

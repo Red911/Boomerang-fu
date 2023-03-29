@@ -12,16 +12,8 @@ public class PlayerBehaviour_Test : MonoBehaviour
     private int velocityXHash;
     private int velocityYHash;
     
-    [Header("Ground & Gravity")]
-    public float gravity = -9.81f;
-    private Vector3 velocity;
-    private bool isGrounded;
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-    
     public GameObject projectilePrefab;
-    private CharacterController _controller;
+    private Rigidbody rb;
     private PlayerControls _controls;
 
     private bool canShoot = true;
@@ -61,7 +53,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
 
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         _animator = GetComponentInChildren<Animator>();
 
         velocityXHash = Animator.StringToHash("VelocityX");
@@ -79,19 +71,6 @@ public class PlayerBehaviour_Test : MonoBehaviour
             isDead = false;
             StartCoroutine(KillAndResurect());
         }
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-        _controller.Move(velocity * Time.deltaTime);
-        
-        _animator.SetFloat(velocityXHash, direction.x);
-        _animator.SetFloat(velocityYHash, direction.y);
     }
 
     void FixedUpdate()
@@ -104,7 +83,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
 
-            _controller.Move(direction * speed * Time.deltaTime);
+            rb.MovePosition(transform.position +direction * speed * Time.deltaTime);
         }
       
     }
@@ -130,7 +109,7 @@ public class PlayerBehaviour_Test : MonoBehaviour
     {
         canShoot = false;
         compteurShuriken++;
-        GameObject shuriken = Instantiate(projectilePrefab, transform.position + transform.forward, transform.rotation);
+        GameObject shuriken = Instantiate(projectilePrefab, transform.position + new Vector3(0, 0, 2), transform.rotation);
         if (compteurShuriken == 3)
         {
             shuriken.GetComponent<Boomerang>().activeBounce = true;

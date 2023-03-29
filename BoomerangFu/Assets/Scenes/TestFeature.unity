@@ -616,6 +616,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8034942086017369415, guid: a266cb01c630a2a46b7d1b1a69b16756, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034942086017369415, guid: a266cb01c630a2a46b7d1b1a69b16756, type: 3}
       propertyPath: move.m_Id
       value: 230a8f38-b17e-468a-abd7-fb0cb3a31460
       objectReference: {fileID: 0}
@@ -626,6 +630,10 @@ PrefabInstance:
     - target: {fileID: 8034942086017369415, guid: a266cb01c630a2a46b7d1b1a69b16756, type: 3}
       propertyPath: move.m_Name
       value: Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034942086017369433, guid: a266cb01c630a2a46b7d1b1a69b16756, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a266cb01c630a2a46b7d1b1a69b16756, type: 3}

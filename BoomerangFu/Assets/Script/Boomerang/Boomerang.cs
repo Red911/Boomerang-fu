@@ -28,7 +28,7 @@ public class Boomerang : MonoBehaviour
         // transform.Rotate(90f, 0f, 0f, Space.Self);
         
         // rb.velocity = transform.forward * speed;
-        // rb.angularVelocity = new Vector3(0, 0, 20);
+        rb.angularVelocity = new Vector3(0, 20, 0);
     }
 
     void FixedUpdate()
@@ -51,7 +51,7 @@ public class Boomerang : MonoBehaviour
             rb.MovePosition(transform.position + transform.forward * speed * Time.fixedDeltaTime);
 
             // Rotation du boomerang pendant le lancer
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.fixedDeltaTime * 1000f, Space.Self);
+            // transform.Rotate(Vector3.forward, rotationSpeed * Time.fixedDeltaTime * 1000f, Space.Self);
 
             // Si le boomerang a parcouru la distance maximale, il commence à revenir
             if (Vector3.Distance(transform.position, startPosition) > distance)
@@ -99,7 +99,10 @@ public class Boomerang : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 
             }
-            
+        }
+        else if (col.gameObject.CompareTag("Shuriken"))
+        {
+            returning = true;
         }
     }
     
